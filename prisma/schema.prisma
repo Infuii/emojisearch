@@ -64,3 +64,10 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+model Emoji {
+  id String @id @default(cuid())
+  character   String
+  unicodeName String
+  createdAt   DateTime @default(now())
+}
