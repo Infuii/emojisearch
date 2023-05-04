@@ -1,13 +1,20 @@
+import { AssertionError } from 'assert';
 import React, { useState, useEffect } from 'react';
 
+type Emoji = {
+  character: string;
+  unicodeName: string;
+  codePoint: string;
+}
+
 function Copies() {
-  const [emojis, setEmojis] = useState([]);
+  const [emojis, setEmojis] = useState<Emoji[]>([]);
 
   useEffect(() => {
     async function fetchEmoji() {
       const response = await fetch("/api/getemoji");
       let data = await response.json();
-      data = data.filter((item, index) => data.indexOf(item) === index)
+      data = [...new Set(data)]
       setEmojis(data);
     }
     fetchEmoji();

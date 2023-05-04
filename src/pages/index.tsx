@@ -2,7 +2,6 @@ import { NextPage } from "next";
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { Link, BrowserRouter } from "react-router-dom";
 
 type Emoji = {
   character: string;
@@ -81,7 +80,7 @@ const Home: NextPage = () => {
         type="text"
         className="mx-auto block w-1/2 rounded-lg border border-gray-300 px-4 py-2 text-center shadow-md shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
         placeholder="Search for emoticon"
-        onChange={emojiSearch}
+        onChange={() => emojiSearch}
         onBlur={resetEmojis}
         onKeyDown={resetEmojis}
       />
